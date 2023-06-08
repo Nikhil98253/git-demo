@@ -1,0 +1,61 @@
+package openabrowser;
+
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.openqa.selenium.WebDriver;
+
+import java.awt.Checkbox;
+		import java.awt.Frame;
+		import java.awt.List;
+		import java.util.concurrent.TimeUnit;
+		import org.openqa.selenium.By;
+		import org.openqa.selenium.By.ByCssSelector;
+		import org.openqa.selenium.Dimension;
+		import org.openqa.selenium.Keys;
+		import org.openqa.selenium.WebElement;
+		import org.openqa.selenium.chrome.ChromeDriver;
+		import org.openqa.selenium.chrome.ChromeOptions;
+		import org.openqa.selenium.support.ui.Select;
+		import com.google.common.annotations.VisibleForTesting;
+public class hdfc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		class existing_browser {
+		@VisibleForTesting
+		public void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		
+		WebDriver wd = new ChromeDriver();
+		//ChromeOptions chromeOptions = new ChromeOptions();
+	//	chromeOptions.addArguments("-remote-allow-origins=*");
+		//WebDriverWait wait=new WebDriverWait(wd, 10);
+		wd.get("https://google.com/");
+		wd.manage().window().maximize();
+		wd.switchTo().frame(wd.findElement(By.cssSelector("frame[name='login_page']")));
+		wd.findElement(By.name("fldLoginUserId")).sendKeys(Keys.ENTER);
+	//	wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[name='fldPassword']")));
+
+		try {
+		Thread.sleep(5000);
+		} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		} */
+
+		}else {
+		System.out.println("checkbox in OFF");
+		}
+		wd.findElement(By.cssSelector("img[alt='Login']")).click();
+		// -----------------------open a RD------------------
+		Thread.sleep(3000);
+		wd.switchTo().frame(wd.findElement(By.cssSelector("frame[name='left_menu']")));
+		Thread.sleep(3000);
+		wd.findElement(By.cssSelector("li[class='accord-menu']")).click();
+		Thread.sleep(3000);
+		wd.findElement(By.id("RDO_nohref")).click();

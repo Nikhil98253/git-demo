@@ -1,0 +1,112 @@
+import java.awt.Button;
+import java.time.Duration;
+import java.util.List;
+
+import javax.lang.model.element.Element;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.pagefactory.ElementLocator;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+/**
+ * 
+ */
+
+/**
+ * @author NikhilNewhale
+ *
+ */
+public class T824 {
+	private static WebDriver wd;
+		@SuppressWarnings("deprecation")
+		public static void main(String[] args) throws InterruptedException {
+			// TODO Auto-generated method stub
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\NikhilNewhale\\OneDrive - Nuvolo Technologies\\Pictures\\chrome\\chromedriver.exe");
+	//WebDriver wd = new ChromeDriver();
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--remote-allow-origins=*");
+	ChromeDriver wd = new ChromeDriver(options);
+	//chromeOptions.addArguments("-remote-allow-origins=*");
+	//wd.navigate().to("https://netbanking.hdfcbank.com/netbanking/");
+	//wd.get("https://netbanking.hdfcbank.com/netbanking/");
+//	wd.manage().window().maximize();
+//	wd.switchTo().frame(wd.findElement(By.cssSelector("frame[name='login_page']")));
+	wd.manage().window().maximize();
+	//String basreURL = "https://ven01062.service-now.com/";
+	wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)) ;
+	wd.get("https://ven01843.service-now.com/"); 
+
+	String title = wd.getTitle();
+	System.out.println(title);
+	
+		WebDriverWait wait = new WebDriverWait(wd, Duration.ofSeconds(30));
+		wd.switchTo().frame("gsft_main");
+		//Thread.sleep(45000);
+		wd.findElement(By.name("user_name")).sendKeys("nikhil.newhale@nuvolo.com");
+		wd.findElement(By.name("user_password")).sendKeys("Samosa@12345"); Thread.sleep(3000);
+		 wd.findElement(By.id("sysverb_login")).click();  Thread.sleep(5000);
+		 String username = "nikhil.newhale@nuvolo.com";
+		 String password = "Samosa@12345";
+		 if (username == "nikhil.newhale@nuvolo.com"&& password =="Samosa@12345") 
+		 {
+System.out.println("Login to ven01843 successfully \n");
+			 		 }
+		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user_info_dropdown")));
+		 Thread.sleep(5000);
+		 List<WebElement> dashboard = (List<WebElement>) wd.findElements(By.id("collapseId08771d0cc0a8016401f604303b94b999"));
+		 		 for(WebElement webElement : dashboard )
+				{
+					String name = webElement.getText();
+					System.out.println(name);
+				}
+
+		wd.findElement(By.id("filter")).sendKeys("intervals");
+		wd.findElement(By.id("concourse_module_0f25c8ae1b2fb0509becdb91dd4bcb77")).click();
+		 Thread.sleep(5000);
+	/*	 List<WebElement> Interval = (List<WebElement>) wd.findElements(By.id("react-root"));
+		 
+		 for(WebElement webElement : Interval )
+			{
+				String name = webElement.getText();
+				System.out.println(name);
+			}
+*/
+		 
+		// wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("sc-bCwfaz cUiVhG sc-dksuTV zPuL")));
+		 String id = "dx-col-6"; String s1 = "Name";
+		 String id1 = "dx-col-7"; String s2 = "Levels";
+		 String id2 = "dx-col-8"; String s3 = "Work Order Type";
+		 String id3 = "dx-col-9"; String s4 = "Interval Type";
+		 String id4 = "dx-col-10"; String s5 = "Interval Target";
+		 if(id == "dx-col-6"&&id1 == "dx-col-7"&&id2 == "dx-col-8"&&id3 == "dx-col-9"&&id4 == "dx-col-10")
+		 {
+			 System.out.println("\n Interval Page opened successfully with below column Names -\n ");
+			 			 Thread.sleep(5000);
+			 System.out.println(s1 + "\n" + s2 + "\n" + s3 + "\n" + s4 + "\n" + s5 + "\n" );
+			/* System.out.println(s2);
+			 System.out.println(s3);
+			 System.out.println(s4);
+			 System.out.println(s5); */
+			 		 }
+			 else 
+			 {
+								 System.out.println("Interval Page NOT opened successfully");
+						 }
+	
+		 Thread.sleep(10000);
+		 
+		wd.findElement(By.className("dx-button-content")).click();
+		
+		 
+		}
+
+		
+}
